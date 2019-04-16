@@ -58,7 +58,7 @@ public class TestPost {
 
         driver.findElement(By.xpath("//input[@id='subject']")).sendKeys("Zdrassцэ, zabor pokrassцэ!!!");
 
-        driver.findElement(By.xpath("//body[@class='mce-content-body']")).sendKeys("Hello world");
+//        driver.findElement(By.xpath("//body[@class='mce-content-body']")).sendKeys("Hello world");
 
         driver.findElement(By.xpath("//span[contains(text(),'Отправить')]")).click();
 
