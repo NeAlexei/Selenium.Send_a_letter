@@ -3,6 +3,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterTest;
@@ -29,83 +30,43 @@ public class TestPost {
         System.setProperty("webdriver.chrome.driver","D:\\Java\\TestPost\\src\\main\\resources\\chromedriver.exe");
 //        driver = new EdgeDriver();
         driver = new ChromeDriver();
-//        driver.get("https://rambler.ru");
-
         driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
-        driver.get("https://gmail.com");
-
+        driver.get("https://rambler.ru");
     }
 
     @Test
     public void Test() {
 
-        driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
-        driver.findElement(By.xpath("//input[@id='identifierId']"));
-        driver.findElement(By.xpath("//input[@id='identifierId']")).sendKeys("nechytaila89@gmail.com");
+        driver.manage().window().maximize();
+
+        WebElement explicitWaitEmail = (new WebDriverWait(driver, 10))
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@placeholder='Введите e-mail']")));
+        explicitWaitEmail.sendKeys("5first12@rambler.ru");
+
+        driver.findElement(By.xpath("//div[@class='_2_6D _3EZH']//button[@type='button']")).click();
 
         driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
-//        driver.findElement(By.xpath("//span[contains(text(),'Далее')]"));
-        driver.findElement(By.xpath("//span[contains(text(),'Далее')]")).click();
+
+        WebElement explicitWaitPassw = (new WebDriverWait(driver, 10))
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@placeholder='Введите пароль']")));
+        explicitWaitPassw.sendKeys("1a2b3c");
 
         driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
 
-        WebElement explicitWaitPassword = (new WebDriverWait(driver, 10))
-                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@name='password']")));
-        explicitWaitPassword.sendKeys("y9cn41k5");
+        driver.findElement(By.xpath("//button[@type='submit']")).click();
 
-//        driver.findElement(By.xpath("//input[@name='password']"));
-//        driver.findElement(By.xpath("//input[@name='password']")).sendKeys("y9cn41k5");
+        WebElement explicitWaitWriteLetter  = (new WebDriverWait(driver, 10))
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[@class='_3TeJ']")));
+        explicitWaitWriteLetter.click();
 
-        driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
-//        driver.findElement(By.xpath("//span[contains(text(),'Далее')]"));
-        driver.findElement(By.xpath("//span[contains(text(),'Далее')]")).click();
+        WebElement explicitWaitKomy = (new WebDriverWait(driver, 10))
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@id='receivers']")));
+        explicitWaitKomy.sendKeys("a.nechitaylo@hypervsn.com");
 
-//        WebElement explicitWait1 = (new WebDriverWait(driver, 12))
-//                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@id='identifierId']")));
-//        explicitWait1.sendKeys("nechytaila89@gmail.com");
-//
-//        WebElement explicitWait2 = (new WebDriverWait(driver, 12))
-//                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span[contains(text(),'Далее')]")));
-//        explicitWait2.click();
+        driver.findElement(By.xpath("//input[@id='subject']")).sendKeys("DRATUTI");
 
-//        driver.findElement(By.xpath("//span[contains(text(),'Далее')]")).click();
+        driver.findElement(By.xpath("//span[contains(text(),'Отправить')]")).click();
 
-//        driver.findElement(By.xpath("//input[@id='identifierId']")).sendKeys("nechytaila89@gmail.com");
-//        WebElement explicitWait1 = (new WebDriverWait(driver, 5))
-//                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span[contains(text(),'Далее')]")));
-
-//        WebDriverWait wait = new WebDriverWait(driver, 10);
-
-//        WebElement explicitWait3 = (new WebDriverWait(driver, 12))
-//                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@class='whsOnd zHQkBf']")));
-//        explicitWait3.sendKeys("y9cn41k5");
-//
-//        WebElement explicitWait4 = (new WebDriverWait(driver, 12))
-//                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span[contains(text(),'Далее')]")));
-//        explicitWait4.click();
-
-//
-//        driver.findElement(By.xpath("//span[contains(text(),'Далее')]")).click();
-
-//        driver.findElement(By.xpath("//input[@class='whsOnd zHQkBf']")).sendKeys("y9cn41k5");
-//        driver.findElement(By.xpath("//span[contains(text(),'Далее')]")).click();
-
-        WebElement explicitWaitCreate = (new WebDriverWait(driver, 10))
-                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='T-I J-J5-Ji T-I-KE L3 T-I-JW T-I-JO']")));
-        explicitWaitCreate.click();
-
-        WebElement explicitWaitComy = (new WebDriverWait(driver, 10))
-                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//textarea[@id=':1uz']")));
-        explicitWaitComy.sendKeys("a.nechitaylo@hypervsn.com");
-
-        driver.findElement(By.xpath("//input[@id=':1uh']")).sendKeys("Приветствие");
-        driver.findElement(By.xpath("//div[@id=':1u7']")).click();
-
-
-//        driver.findElement(By.xpath("//textarea[@id=':om']")).sendKeys("a.nechitaylo@hypervsn.com");
-//        driver.findElement(By.xpath("//input[@id=':o4']")).sendKeys("Приветствие");
-//        driver.findElement(By.xpath("//div[@id=':p9']")).sendKeys("Здрасссьцэ!");
-//        driver.findElement(By.xpath("//div[@id=':nu']")).click();
     }
 
     @AfterTest
