@@ -56,7 +56,9 @@ public class TestPost {
                 .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@id='receivers']")));
         explicitWaitKomy.sendKeys("a.nechitaylo@hypervsn.com");
 
-        driver.findElement(By.xpath("//input[@id='subject']")).sendKeys("DRATUTI");
+        driver.findElement(By.xpath("//input[@id='subject']")).sendKeys("Zdrassцэ, zabor pokrassцэ!!!");
+
+        driver.findElement(By.xpath("//body[@class='mce-content-body']")).sendKeys("Hello world");
 
         driver.findElement(By.xpath("//span[contains(text(),'Отправить')]")).click();
 
